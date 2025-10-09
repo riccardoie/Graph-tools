@@ -1,8 +1,6 @@
-import os 
-
+import sys 
 
 def form_stats(filename, size):
-
     #Partition file
     partition_file = open(f"../{filename}.part.{size}")
     content = partition_file.readlines()
@@ -33,4 +31,13 @@ def form_stats(filename, size):
     for n in partitions:
         print(n)
 
-form_stats("100_graph", 7)
+if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print(
+            "Usage: python script.py <graph_file> <num_parts>"
+        )
+        sys.exit(1)
+    
+    graph_filename = sys.argv[1]
+    num_parts = sys.argv[2]
+    form_stats(f"..graphs/{graph_filename}", num_parts)
