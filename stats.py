@@ -2,13 +2,13 @@ import sys
 
 def form_stats(filename, size):
     #Partition file
-    partition_file = open(f"../{filename}.part.{size}")
+    partition_file = open(f"{filename}.part.{size}")
     content = partition_file.readlines()
 
-    partitions = [0] * size
+    partitions = [0] * int(size)
 
     #Original graph file 
-    with open(f"../{filename}") as graph_file:
+    with open(f"{filename}") as graph_file:
         for i, line in enumerate(graph_file):
 
             #Store header info
@@ -28,8 +28,8 @@ def form_stats(filename, size):
                 if (partition != n_p):
                     partitions[partition] += 1
 
-    for n in partitions:
-        print(n)
+    for pid, cut in enumerate(partitions):
+        print(f"Pid {pid} has cut: {cut}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
@@ -40,4 +40,4 @@ if __name__ == "__main__":
     
     graph_filename = sys.argv[1]
     num_parts = sys.argv[2]
-    form_stats(f"..graphs/{graph_filename}", num_parts)
+    form_stats(f"../graphs/{graph_filename}", num_parts)

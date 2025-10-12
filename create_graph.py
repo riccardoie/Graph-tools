@@ -45,4 +45,4 @@ if __name__ == "__main__":
     filename = sys.argv[2]
     params = sys.argv[3:]
 
-    generate_graph(graph_type, filename, *params)
+    generate_graph(graph_type, f"../graphs/{filename}", *params)
