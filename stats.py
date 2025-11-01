@@ -64,3 +64,14 @@ if __name__ == "__main__":
         sys.exit(1)
 
     form_stats(graph_filename, type)
+
+# files_grid = ["4_graph", "10_graph", "15_graph", "20_graph", "100_graph", "1000_graph"]
+# files_cube = ["3_cube_graph", "5_cube_graph", "10_cube_graph", "100_cube_graph"]
+
+# for file in files_grid:
+#     form_stats(file, "cut")
+#     form_stats(file, "rg-mk")
+
+# for file in files_cube:
+#     form_stats(file, "cut")
+#     form_stats(file, "rg-mk")
