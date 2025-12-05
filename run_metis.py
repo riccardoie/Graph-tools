@@ -17,18 +17,55 @@ partitions = [4, 5, 10, 15, 25, 50, 100]
 
 def run_metis(type, files):
     for file in files: 
-        n = int(file[:file.find("_")])
+        with open(f"../graphs/{file}", 'r') as tmp:
+            first_line = tmp.readline().strip().split() # Read the first line and remove whitespace
+        
+        print(str(file))
+        n = int(first_line[0])
 
         for partition in partitions:
 
-            if(not n*n*n >= partition * partition):
+            if(not n >= partition * partition):
                 break
-            command = ["gpmetis", f"../graphs/{file}", str(partition)] if type != "rg-mk" else ["gpmetis", f"../graphs/{file}", str(partition), "-objtype=rg-mk"]
-            result = subprocess.run(command, capture_output=True, text=True)
-            parse_result(result, "cut_partitions", f"{file}_{str(partition)}_stats") if type != "rg-mk" else parse_result(result, "rg-mk_partitions", f"{file}_{str(partition)}_stats")
 
-    move_files("cut_partitions") if type != "rg-mk" else move_files("rg-mk_partitions")
+            if type == "rg-mk":
+                command = ["gpmetis", f"../graphs/{file}", str(partition), "-objtype=rg-mk"]
+                result = subprocess.run(command, capture_output=True, text=True)
+                parse_result(result, "rg-mk_partitions", f"{file}_{str(partition)}_stats")
+                # parse_iterations(result, "rg-mk_partitions", f"{file}_{str(partition)}_stats")
+            elif type == "cut":
+                command = ["gpmetis", f"../graphs/{file}", str(partition)]
+                result = subprocess.run(command, capture_output=True, text=True)
+                parse_result(result, "cut_partitions", f"{file}_{str(partition)}_stats")
+                # parse_iterations(result, "cut_partitions", f"{file}_{str(partition)}_stats")
+            elif type == "nvol":
+                command = ["gpmetis", f"../graphs/{file}", str(partition), "-objtype=nvol"]
+                result = subprocess.run(command, capture_output=True, text=True)
+                parse_result(result, "nvol_partitions", f"{file}_{str(partition)}_stats")
+            else:
+                print("WRONG TYPE")
 
+            # command = ["gpmetis", f"../graphs/{file}", str(partition)] if type != "rg-mk" else ["gpmetis", f"../graphs/{file}", str(partition), "-objtype=rg-mk"]
+            # result = subprocess.run(command, capture_output=True, text=True)
+            # parse_result(result, "cut_partitions", f"{file}_{str(partition)}_stats") if type != "rg-mk" else parse_result(result, "rg-mk_partitions", f"{file}_{str(partition)}_stats")
+
+    if type == "rg-mk":
+        move_files("rg-mk_partitions")
+        # move_files("enhanced_boundary_partitions")
+    elif type == "cut":
+        move_files("cut_partitions")
+    elif type == "nvol":
+        move_files("nvol_partitions")
+        
+def parse_iterations(output, destination, file):
+    
+    for line in output.stdout.splitlines():
+        if "Metis had" in line and "iterations" in line:
+            end_ind = line.find("iterations")
+            start_ind = len("Metis had")
+            iterations = line[start_ind:end_ind]
+
+            print(iterations)
 
 def move_files(destination):
 
@@ -92,4 +129,14 @@ def write_metrics_to_file(path, ed, cv, balance, io_time, pt_time, rep_time):
         if rep_time is not None:
             f.write(f"Reporting Time:     {rep_time}\n")
 
-# run_metis("rg-mk", files_grid)
+run_metis("rg-mk", ["roadsCA_graph"])
+run_metis("rg-mk", files_cube)
+run_metis("rg-mk", files_grid)
+run_metis("rg-mk", ["skitter_graph"])
+run_metis("rg-mk", ["deezer_graph"])
+
+run_metis("cut", ["roadsCA_graph"])
+run_metis("cut", files_cube)
+run_metis("cut", files_grid)
+run_metis("cut", ["skitter_graph"])
+run_metis("cut", ["deezer_graph"])

@@ -52,15 +52,7 @@ def find_files(file):
         else: 
             cut = parse_file(partition_file)
 
-    # print(rg_mk)
-    # print(cut)
     compare_dicts_grid(rg_mk, cut, "RG-MK", "CUT")
-
-
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
-import numpy as np
-import math
 
 def compare_dicts_grid(dict_a, dict_b, title_a='Approach A', title_b='Approach B'):
     # --- Validation ---
