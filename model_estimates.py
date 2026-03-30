@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import sys
+import argparse
 
 
 def calculate_incoming_msg(graph, version, N):
@@ -51,10 +52,10 @@ def calculate_time(graph, version, nr_of_partitions, startup_latency, BW_MP):
 
     # Precompute trecv for all i iteratively
     trecv_vals = [0.0] * N
-    trecv_vals[0] = N * V[0] / BW_MP
+    trecv_vals[0] = N * V[0] / BW_MP[0]
     for i in range(1, N):
         delta_V = V[i] - V[i - 1]
-        trecv_vals[i] = (N - i) * delta_V / BW_MP + trecv_vals[i - 1]
+        trecv_vals[i] = (N - i) * delta_V / BW_MP[i - 1] + trecv_vals[i - 1]
 
     # Compute tsend for all (i, j) iteratively
     times = []
@@ -94,17 +95,56 @@ def model_estimate(graph, type, nr_of_partitions, startup_latency, bandwidth):
     plt.show()
 
 
-if __name__ == "__main__":
-    if len(sys.argv) < 5:
-        print(
-            "Usage: python script.py <graph_file> <type> <nr of partitions> <startup_latency> <bandwidth>"
-        )
-        sys.exit(1)
+# if __name__ == "__main__":
+#     if len(sys.argv) < 5:
+#         print(
+#             "Usage: python script.py <graph_file> <type> <nr of partitions> <startup_latency> <bandwidth>"
+#         )
+#         sys.exit(1)
     
-    graph_filename = sys.argv[1]
-    type = sys.argv[2]
-    nr_of_partitions = int(sys.argv[3])
-    startup_latency = int(sys.argv[4])
-    bandwidth = int(sys.argv[5])
+#     graph_filename = sys.argv[1]
+#     type = sys.argv[2]
+#     nr_of_partitions = int(sys.argv[3])
+#     startup_latency = int(sys.argv[4])
+#     bandwidth = int(sys.argv[5])
 
-    model_estimate(graph_filename, type, nr_of_partitions, startup_latency, bandwidth)
+#     model_estimate(graph_filename, type, nr_of_partitions, startup_latency, bandwidth)
+
+def parse_bandwidth(value):
+    try:
+        return list(map(int, value.split(",")))
+    except ValueError:
+        raise argparse.ArgumentTypeError(
+            "Bandwidth must be a comma-separated list of integers (e.g. 10,20,30)"
+        )
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Run model estimation")
+
+    parser.add_argument("graph_file", help="Name of graph file")
+    parser.add_argument("type", help="Type of model")
+    parser.add_argument("nr_of_partitions", type=int, help="Number of partitions")
+    parser.add_argument("startup_latency", type=int, help="Startup latency")
+
+    parser.add_argument(
+        "--bandwidth",
+        required=True,
+        type=parse_bandwidth,
+        help="Comma-separated bandwidth values (e.g. 10,20,30)",
+    )
+
+    args = parser.parse_args()
+
+    # Validate bandwidth length
+    if len(args.bandwidth) != args.nr_of_partitions:
+        parser.error(
+            "Number of bandwidth values must match nr_of_partitions"
+        )
+
+    model_estimate(
+        args.graph_file,
+        args.type,
+        args.nr_of_partitions,
+        args.startup_latency,
+        args.bandwidth,
+    )
