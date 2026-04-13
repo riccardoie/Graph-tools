@@ -2,10 +2,43 @@ import matplotlib.pyplot as plt
 import argparse
 import numpy as np
 
-BW_MP = [1,1,1,1,1,1,1,1,
-        1,1,1,1,1,1,1,1,
-        1,1,1,1,1,1,1,1,
-        1,1,1,1,1,1,1,1]
+bandwith = [5,     #1
+        10.5,   #2
+        0.5*(10.5 + 14.8),
+        14.8,   #4
+        0.5*(16.7 + 14.8),
+        16.7,   #6
+        0.5*(16.7 + 17.0),
+        17.0,   #8
+        0.5*(17.0 + 18.8),
+        18.8,   #10
+        0.5*(18.8 + 19.5),
+        19.5,   #12
+        0.5*(19.5 + 19.5),
+        19.5,   #14
+        0.5*(19.5 + 19.8),
+        19.8,   #16
+        0.5*(19.8 + 22.5),
+        22.5,   #18
+        0.5*(22.3 + 25.3),
+        25.3,   #20
+        0.5*(25.3 + 25.3),
+        25.3,   #22
+        0.5*(25.3 + 26.1),
+        26.1,   #24
+        0.5*(26.1 + 26.1),
+        26.1,   #26
+        0.5*(26.1 + 26.1),
+        26.1,   #28
+        0.5*(26.1 + 26.1),
+        26.1,   #30
+        0.5*(26.1 + 26.9),
+        26.9]   #32
+
+BW_MP = [x * 1024*1024*1024 for x in bandwith]
+
+
+tau = 3.8 * 10**-6
 
 def calculate_incoming_msg(graph, version, N):
 
@@ -43,7 +76,7 @@ def calculate_incoming_msg(graph, version, N):
             # For each partition k neighbor to i, add one to incoming messages to partition k
             # Store the set of reachable partitions for i's partition
             for p in neighbor_partitions:
-                incoming_msgs[p][1][partition] += 1 # times 8 bytes
+                incoming_msgs[p][1][partition] +=  8 #8 bytes
                 incoming_msgs[partition][0].add(p)
     return incoming_msgs
 
@@ -90,12 +123,10 @@ def calculate_time(graph, version, nr_of_partitions, startup_latency):
 
 def model_estimate(graph, type, nr_of_partitions, startup_latency):
     times_metis = calculate_time(graph, "vol_partitions", nr_of_partitions, startup_latency)
-    # times_nvol22 = calculate_time(graph, "nvol_03", nr_of_partitions, startup_latency, bandwidth)
     times_nvol = calculate_time(graph, type, nr_of_partitions, startup_latency)
     
     max_metis = max(times_metis)
     max_nvol = max(times_nvol)
-    # max_nvol22 = max(times_nvol22)
 
     x = np.arange(len(times_metis))
     width = 0.35
@@ -152,4 +183,7 @@ def parse_bandwidth(value):
         args.bandwidth,
     )
 
-model_estimate("heart03_graph", "nvol_02", 32, 1)
+# channel-500x100x100-b050_graph
+# hugetrace00020_graph
+# heart06_graph
+model_estimate("heart03_graph", "nvol_02", 32, tau)
