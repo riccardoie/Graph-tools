@@ -1,7 +1,11 @@
 import matplotlib.pyplot as plt
-import sys
 import argparse
+import numpy as np
 
+BW_MP = [1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1]
 
 def calculate_incoming_msg(graph, version, N):
 
@@ -39,23 +43,28 @@ def calculate_incoming_msg(graph, version, N):
             # For each partition k neighbor to i, add one to incoming messages to partition k
             # Store the set of reachable partitions for i's partition
             for p in neighbor_partitions:
-                incoming_msgs[p][1][partition] += 1
+                incoming_msgs[p][1][partition] += 1 # times 8 bytes
                 incoming_msgs[partition][0].add(p)
     return incoming_msgs
 
-def calculate_time(graph, version, nr_of_partitions, startup_latency, BW_MP):
+def calculate_time(graph, version, nr_of_partitions, startup_latency):
     N = nr_of_partitions
     incoming_msg = calculate_incoming_msg(graph, version, N)
 
     # Precompute V_i (volume sums) once
     V = [sum(incoming_msg[i][1]) for i in range(N)]
 
+    # Sort values after V, keep same order for incoming msgs
+    order = sorted(range(N), key=lambda i: V[i])
+    V = [V[i] for i in order]
+    incoming_msg = [incoming_msg[i] for i in order]
+
     # Precompute trecv for all i iteratively
     trecv_vals = [0.0] * N
-    trecv_vals[0] = N * V[0] / BW_MP[0]
+    trecv_vals[0] = N * V[0] / BW_MP[N - 1]
     for i in range(1, N):
         delta_V = V[i] - V[i - 1]
-        trecv_vals[i] = (N - i) * delta_V / BW_MP[i - 1] + trecv_vals[i - 1]
+        trecv_vals[i] = (N - i) * delta_V / BW_MP[N - i] + trecv_vals[i - 1]
 
     # Compute tsend for all (i, j) iteratively
     times = []
@@ -68,7 +77,8 @@ def calculate_time(graph, version, nr_of_partitions, startup_latency, BW_MP):
         tsend_ij = M_in * s[0] / V[i] * trecv_i if V[i] > 0 else 0
         max_msg = max(max_msg, tsend_ij)
 
-        for j in range(1, N):
+        # UNTIL M_IN
+        for j in range(1, M_in):
             delta_s = s[j] - s[j - 1]
             tsend_ij = (M_in - j) * delta_s / V[i] * trecv_i + tsend_ij if V[i] > 0 else 0
             max_msg = max(max_msg, tsend_ij)
@@ -78,37 +88,29 @@ def calculate_time(graph, version, nr_of_partitions, startup_latency, BW_MP):
     return times
 
 
-def model_estimate(graph, type, nr_of_partitions, startup_latency, bandwidth):
-    times_metis = calculate_time(graph, "vol_partitions", nr_of_partitions, startup_latency, bandwidth)
-    times_nvol = calculate_time(graph, type, nr_of_partitions, startup_latency, bandwidth)
+def model_estimate(graph, type, nr_of_partitions, startup_latency):
+    times_metis = calculate_time(graph, "vol_partitions", nr_of_partitions, startup_latency)
+    # times_nvol22 = calculate_time(graph, "nvol_03", nr_of_partitions, startup_latency, bandwidth)
+    times_nvol = calculate_time(graph, type, nr_of_partitions, startup_latency)
+    
+    max_metis = max(times_metis)
+    max_nvol = max(times_nvol)
+    # max_nvol22 = max(times_nvol22)
 
+    x = np.arange(len(times_metis))
+    width = 0.35
 
-    plt.plot(times_metis, label="METIS")
-    plt.plot(times_nvol, label="NVOL")
+    plt.bar(x - width/2, times_metis, width, label="METIS (baseline)")
+    plt.bar(x + width/2, times_nvol, width, label=f"NVOL ({(max_nvol - max_metis) / max_metis * 100:+.1f}%)")
 
     # Optional labels
     plt.xlabel("partition")
-    plt.ylabel("times")
+    plt.ylabel("Time")
     plt.title("Time difference")
     plt.legend()
     # Show plot
     plt.show()
 
-
-# if __name__ == "__main__":
-#     if len(sys.argv) < 5:
-#         print(
-#             "Usage: python script.py <graph_file> <type> <nr of partitions> <startup_latency> <bandwidth>"
-#         )
-#         sys.exit(1)
-    
-#     graph_filename = sys.argv[1]
-#     type = sys.argv[2]
-#     nr_of_partitions = int(sys.argv[3])
-#     startup_latency = int(sys.argv[4])
-#     bandwidth = int(sys.argv[5])
-
-#     model_estimate(graph_filename, type, nr_of_partitions, startup_latency, bandwidth)
 
 def parse_bandwidth(value):
     try:
@@ -118,13 +120,14 @@ def parse_bandwidth(value):
             "Bandwidth must be a comma-separated list of integers (e.g. 10,20,30)"
         )
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run model estimation")
 
     parser.add_argument("graph_file", help="Name of graph file")
     parser.add_argument("type", help="Type of model")
     parser.add_argument("nr_of_partitions", type=int, help="Number of partitions")
-    parser.add_argument("startup_latency", type=int, help="Startup latency")
+    parser.add_argument("startup_latency", type=float, help="Startup latency")
+    # parser.add_argument("bandwidth", type=float, help="Startup latency")
 
     parser.add_argument(
         "--bandwidth",
@@ -148,3 +151,5 @@ if __name__ == "__main__":
         args.startup_latency,
         args.bandwidth,
     )
+
+model_estimate("heart03_graph", "nvol_02", 32, 1)
