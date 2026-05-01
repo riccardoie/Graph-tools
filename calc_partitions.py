@@ -1,5 +1,6 @@
 import sys 
 import os
+import numpy as np
 
 #Finds the cut per partition
 def form_stats(filename, folder, filter):
@@ -56,62 +57,39 @@ def form_stats(filename, folder, filter):
 
 def form_volstats(filename, folder):
     #Partition file
-
     source_folder = f"../{folder}"
 
     if ("nvol" not in folder and "contig" not in folder):
         source_folder = f"../{folder}_partitions"
 
     results = {}
+    # Original graph file 
+    with open(f"../graphs/{filename}") as graph_file:
+        next(graph_file)
+        adjacency = [list(map(int, line.split())) for line in graph_file]
 
     for partition_file in os.listdir(source_folder):
-
         graph_name = partition_file[:partition_file.find(".")]
-        if filename == graph_name:          
-            # Open the partition file
-            file = open(f"{source_folder}/{partition_file}")
+        
+        # Different graph skip to next
+        if filename != graph_name:
+            continue
+        
+        # Read the partition assignments once
+        with open(f"{source_folder}/{partition_file}") as file:
+            size = int(partition_file[partition_file.find("part.") + 5:])
+            part_of = [int(x) for x in file]
 
-            # Extract partition count from filename (e.g., graph.part.4)
-            size = (partition_file[partition_file.find("part.") + 5:])
-            content = file.readlines()
+        # Compute outgoing communication volume per partition
+        partitions = [0] * size
+        for i, neighbors in enumerate(adjacency):
+            p = part_of[i]
+            external = {part_of[n - 1] for n in neighbors if part_of[n - 1] != p}
+            partitions[p] += len(external)
 
-            # Initialize volume count for each partition
-            partitions = [0] * int(size)
+        results[partition_file] = partitions
 
-            # Track neighbors per vertex for volume computation
-            node_neighbors = {}
-
-            # Original graph file 
-            with open(f"../graphs/{filename}") as graph_file:
-                for i, line in enumerate(graph_file):
-                    
-                    # Store header info
-                    if i == 0:
-                        header = line.strip().split()
-                        nr_of_nodes = int(header[0])
-                        continue
-                    
-                    # Graph line, get neighboring nodes
-                    neighbors = list(map(int, line.strip().split()))
-                    node_neighbors[i - 1] = neighbors  # Store 0-based index
-
-            # Compute communication volume
-            for node, neighbors in node_neighbors.items():
-                partition = int(content[node])  # Current partition of the node
-                neighbor_partitions = set()
-
-                for n in neighbors:
-                    n_p = int(content[n - 1])  # Partition of neighbor node
-                    if n_p != partition:
-                        neighbor_partitions.add(n_p)
-
-                # Add one (or more if weighted) volume for each unique external partition
-                partitions[partition] += len(neighbor_partitions)
-
-            # Store results
-            results[partition_file] = partitions
-
-    # # Write output
+    # Write output
     if(folder == "vol"):
         os.makedirs(f"output_stats/{folder}_partitions", exist_ok=True)
         with open(f"output_stats/{folder}_partitions/{folder}_partitions_{filename}_volpartitions", "w") as output:
@@ -129,3 +107,5 @@ def form_volstats(filename, folder):
                 for pid, vol in enumerate(value):
                     output.write(f"\tPid {pid} Vol: {vol}\n")
                 output.write("\n")
+
+form_volstats("europe_osm_graph", "nvol_08")
