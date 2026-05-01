@@ -84,6 +84,7 @@ def calculate_time(graph, version, nr_of_partitions, startup_latency):
     N = nr_of_partitions
     incoming_msg = calculate_incoming_msg(graph, version, N)
 
+
     # Precompute V_i (volume sums) once
     V = [sum(incoming_msg[i][1]) for i in range(N)]
 
@@ -124,7 +125,9 @@ def calculate_time(graph, version, nr_of_partitions, startup_latency):
 def model_estimate(graph, type, nr_of_partitions, startup_latency):
     times_metis = calculate_time(graph, "vol_partitions", nr_of_partitions, startup_latency)
     times_nvol = calculate_time(graph, type, nr_of_partitions, startup_latency)
-    
+
+    # print(times_metis)
+    # print(times_nvol)
     max_metis = max(times_metis)
     max_nvol = max(times_nvol)
 
@@ -184,6 +187,10 @@ def parse_bandwidth(value):
     )
 
 # channel-500x100x100-b050_graph
-# hugetrace00020_graph
+# hugetrace-00020_graph
 # heart06_graph
-model_estimate("heart03_graph", "nvol_02", 32, tau)
+# roadNet-CA_graph
+# citationCiteseer_graph
+# kmer_U1a_graph
+
+model_estimate("fe_tooth_graph", "nvol_08c", 32, tau)

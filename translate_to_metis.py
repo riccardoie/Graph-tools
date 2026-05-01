@@ -1,36 +1,43 @@
 import csv
-from collections import defaultdict
+import os
 
-def translate():
-    # Step 1: Read edges
+def translate(file):
     edges = set()
-    nodes_set = set()
 
-    with open("roadNet-CA.txt", newline='') as f:
-        reader = csv.reader(f)
-        next(reader)  # skip header
-        for row in reader:
-            if("#" in row[0]):
+    with open(file, newline='') as f:
+        # Skip comment lines
+        for line in f:
+            if not line.startswith('%'):
+                break
+        
+        # Parse header
+        header = line.split()
+        nr_of_vertices = int(header[0])
+        # nnz = int(header[2])  # each edge listed twice in symmetric format
+
+        # Parse edges
+        for line in f:
+            tmp = line.split()
+            if len(tmp) < 2:
                 continue
-            tmp = row[0].split()
             a, b = int(tmp[0]), int(tmp[1])
-            # 0-index → 1-index
-            a += 1
-            b += 1
+            if a == b:
+                continue
             edges.add(tuple(sorted((a, b))))
-            nodes_set.update([a, b])
 
-    # Step 2: Build adjacency
-    N = max(nodes_set)  # total nodes
-    adj = [[] for _ in range(N)]
+    print(f"Vertices: {nr_of_vertices}, Unique edges: {len(edges)}")
+
+    # Build adjacency list (0-indexed internally)
+    adj = [[] for _ in range(nr_of_vertices)]
     for a, b in edges:
-        adj[a-1].append(b)
-        adj[b-1].append(a)
+        adj[a - 1].append(b)
+        adj[b - 1].append(a)
 
-    # Step 3: Write METIS file
-    with open("../graphs/roadsCA_graph", "w") as f:
-        f.write(f"{N} {len(edges)}\n")
+    # Write METIS file
+    os.makedirs("../graphs", exist_ok=True)
+    with open(f"../graphs/{file}_graph", "w") as f:
+        f.write(f"{nr_of_vertices} {len(edges)} 000\n")
         for neighbors in adj:
             f.write(" ".join(map(str, sorted(neighbors))) + "\n")
 
-translate()
+translate("coPapersDBLP")
