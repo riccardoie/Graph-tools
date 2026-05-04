@@ -80,4 +80,4 @@ def write_csv(partitions, folder, output_file):
 
 
 
-form_stats("vol")
+# form_stats("vol")

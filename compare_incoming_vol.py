@@ -131,8 +131,8 @@ def main():
         sys.exit(1)
 
     version = sys.argv[3]
-    folder_a = "output_stats/vol_partitions_partitions"
-    folder_b = f"output_stats/{version}_partitions"
+    folder_a = f"output_stats/vol_partitions_partitions/incoming_vol/"
+    folder_b = f"output_stats/{version}_partitions/incoming_vol/"
 
 
     graph_id = sys.argv[1]
