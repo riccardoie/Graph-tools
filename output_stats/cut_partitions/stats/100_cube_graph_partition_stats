@@ -1,0 +1,54 @@
+100_cube_graph.part.2
+	Total Volume: 		20719
+	Max Volume: 		10362
+	Average Volume: 	10359.5
+	Std.Dev: 			2.5
+
+100_cube_graph.part.4
+	Total Volume: 		41171
+	Max Volume: 		10520
+	Average Volume: 	10292.75
+	Std.Dev: 			174.97
+
+100_cube_graph.part.8
+	Total Volume: 		61723
+	Max Volume: 		8461
+	Average Volume: 	7715.38
+	Std.Dev: 			364.72
+
+100_cube_graph.part.16
+	Total Volume: 		98701
+	Max Volume: 		8287
+	Average Volume: 	6168.81
+	Std.Dev: 			1376.98
+
+100_cube_graph.part.32
+	Total Volume: 		137423
+	Max Volume: 		5866
+	Average Volume: 	4294.47
+	Std.Dev: 			872.76
+
+100_cube_graph.part.64
+	Total Volume: 		184288
+	Max Volume: 		3901
+	Average Volume: 	2879.5
+	Std.Dev: 			546.9
+
+100_cube_graph.part.128
+	Total Volume: 		247960
+	Max Volume: 		2590
+	Average Volume: 	1937.19
+	Std.Dev: 			342.1
+
+100_cube_graph.part.256
+	Total Volume: 		329459
+	Max Volume: 		1626
+	Average Volume: 	1286.95
+	Std.Dev: 			200.51
+
+100_cube_graph.part.512
+	Total Volume: 		426685
+	Max Volume: 		1119
+	Average Volume: 	833.37
+	Std.Dev: 			117.43
+

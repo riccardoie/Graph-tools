@@ -1,0 +1,30 @@
+roadNet-CA_graph.part.2
+	Total Volume: 		354
+	Max Volume: 		177
+	Average Volume: 	177
+	Std.Dev: 			0.0
+
+roadNet-CA_graph.part.4
+	Total Volume: 		929
+	Max Volume: 		330
+	Average Volume: 	232.25
+	Std.Dev: 			83.49
+
+roadNet-CA_graph.part.8
+	Total Volume: 		1855
+	Max Volume: 		315
+	Average Volume: 	231.88
+	Std.Dev: 			52.32
+
+roadNet-CA_graph.part.16
+	Total Volume: 		3126
+	Max Volume: 		254
+	Average Volume: 	195.38
+	Std.Dev: 			39.32
+
+roadNet-CA_graph.part.32
+	Total Volume: 		5219
+	Max Volume: 		236
+	Average Volume: 	163.09
+	Std.Dev: 			40.98
+

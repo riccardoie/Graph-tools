@@ -9,8 +9,8 @@ if len(sys.argv) != 3:
     print("Usage: python compare.py <path_to_A_stats> <path_to_B_stats>")
     sys.exit(1)
 
-DIR_A = f"../{sys.argv[1]}_partitions/stats"
-DIR_B = f"../{sys.argv[2]}_partitions/stats"
+DIR_A = f"../{sys.argv[1]}/stats"
+DIR_B = f"../{sys.argv[2]}/stats"
 
 # Regex to extract timing values
 pattern = {

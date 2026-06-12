@@ -1,0 +1,54 @@
+pa2010_graph.part.2
+	Total Volume: 		518
+	Max Volume: 		259
+	Average Volume: 	259
+	Std.Dev: 			0.0
+
+pa2010_graph.part.4
+	Total Volume: 		1426
+	Max Volume: 		461
+	Average Volume: 	356.5
+	Std.Dev: 			105.36
+
+pa2010_graph.part.8
+	Total Volume: 		2511
+	Max Volume: 		385
+	Average Volume: 	313.88
+	Std.Dev: 			79.66
+
+pa2010_graph.part.16
+	Total Volume: 		4271
+	Max Volume: 		313
+	Average Volume: 	266.94
+	Std.Dev: 			46.34
+
+pa2010_graph.part.32
+	Total Volume: 		6513
+	Max Volume: 		278
+	Average Volume: 	203.53
+	Std.Dev: 			47.96
+
+pa2010_graph.part.64
+	Total Volume: 		10155
+	Max Volume: 		226
+	Average Volume: 	158.67
+	Std.Dev: 			32.11
+
+pa2010_graph.part.128
+	Total Volume: 		15534
+	Max Volume: 		176
+	Average Volume: 	121.36
+	Std.Dev: 			25.17
+
+pa2010_graph.part.256
+	Total Volume: 		23268
+	Max Volume: 		131
+	Average Volume: 	90.89
+	Std.Dev: 			18.3
+
+pa2010_graph.part.512
+	Total Volume: 		34708
+	Max Volume: 		106
+	Average Volume: 	67.79
+	Std.Dev: 			13.54
+

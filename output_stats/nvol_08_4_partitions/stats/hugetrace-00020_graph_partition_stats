@@ -1,0 +1,66 @@
+hugetrace-00020_graph.part.2
+	Total Volume: 		2464
+	Max Volume: 		1232
+	Average Volume: 	1232
+	Std.Dev: 			0.0
+
+hugetrace-00020_graph.part.4
+	Total Volume: 		7314
+	Max Volume: 		2128
+	Average Volume: 	1828.5
+	Std.Dev: 			289.16
+
+hugetrace-00020_graph.part.8
+	Total Volume: 		15702
+	Max Volume: 		2833
+	Average Volume: 	1962.75
+	Std.Dev: 			481.44
+
+hugetrace-00020_graph.part.16
+	Total Volume: 		27818
+	Max Volume: 		2380
+	Average Volume: 	1738.62
+	Std.Dev: 			352.74
+
+hugetrace-00020_graph.part.32
+	Total Volume: 		43617
+	Max Volume: 		1711
+	Average Volume: 	1363.03
+	Std.Dev: 			231.56
+
+hugetrace-00020_graph.part.64
+	Total Volume: 		65247
+	Max Volume: 		1314
+	Average Volume: 	1019.48
+	Std.Dev: 			162.96
+
+hugetrace-00020_graph.part.128
+	Total Volume: 		96463
+	Max Volume: 		1024
+	Average Volume: 	753.62
+	Std.Dev: 			110.4
+
+hugetrace-00020_graph.part.256
+	Total Volume: 		139233
+	Max Volume: 		674
+	Average Volume: 	543.88
+	Std.Dev: 			68.0
+
+hugetrace-00020_graph.part.512
+	Total Volume: 		200729
+	Max Volume: 		498
+	Average Volume: 	392.05
+	Std.Dev: 			44.6
+
+hugetrace-00020_graph.part.1024
+	Total Volume: 		286574
+	Max Volume: 		395
+	Average Volume: 	279.86
+	Std.Dev: 			28.3
+
+hugetrace-00020_graph.part.2048
+	Total Volume: 		406431
+	Max Volume: 		255
+	Average Volume: 	198.45
+	Std.Dev: 			17.94
+

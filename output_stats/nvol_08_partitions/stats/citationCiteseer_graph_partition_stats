@@ -1,0 +1,54 @@
+citationCiteseer_graph.part.2
+	Total Volume: 		31866
+	Max Volume: 		15933
+	Average Volume: 	15933
+	Std.Dev: 			0.0
+
+citationCiteseer_graph.part.4
+	Total Volume: 		67824
+	Max Volume: 		18152
+	Average Volume: 	16956
+	Std.Dev: 			2070.96
+
+citationCiteseer_graph.part.8
+	Total Volume: 		124052
+	Max Volume: 		17722
+	Average Volume: 	15506.5
+	Std.Dev: 			3151.6
+
+citationCiteseer_graph.part.16
+	Total Volume: 		164339
+	Max Volume: 		15993
+	Average Volume: 	10271.19
+	Std.Dev: 			3375.68
+
+citationCiteseer_graph.part.32
+	Total Volume: 		220788
+	Max Volume: 		11691
+	Average Volume: 	6899.62
+	Std.Dev: 			2935.91
+
+citationCiteseer_graph.part.64
+	Total Volume: 		276903
+	Max Volume: 		8353
+	Average Volume: 	4326.61
+	Std.Dev: 			2046.64
+
+citationCiteseer_graph.part.128
+	Total Volume: 		318235
+	Max Volume: 		4524
+	Average Volume: 	2486.21
+	Std.Dev: 			1103.51
+
+citationCiteseer_graph.part.256
+	Total Volume: 		368907
+	Max Volume: 		2688
+	Average Volume: 	1441.04
+	Std.Dev: 			665.44
+
+citationCiteseer_graph.part.512
+	Total Volume: 		451090
+	Max Volume: 		1830
+	Average Volume: 	881.04
+	Std.Dev: 			424.77
+

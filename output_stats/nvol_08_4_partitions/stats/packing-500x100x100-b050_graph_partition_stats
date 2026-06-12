@@ -1,0 +1,60 @@
+packing-500x100x100-b050_graph.part.2
+	Total Volume: 		6124
+	Max Volume: 		3062
+	Average Volume: 	3062
+	Std.Dev: 			0.0
+
+packing-500x100x100-b050_graph.part.4
+	Total Volume: 		16984
+	Max Volume: 		5571
+	Average Volume: 	4246
+	Std.Dev: 			1310.75
+
+packing-500x100x100-b050_graph.part.8
+	Total Volume: 		59640
+	Max Volume: 		10201
+	Average Volume: 	7455
+	Std.Dev: 			2075.78
+
+packing-500x100x100-b050_graph.part.16
+	Total Volume: 		101584
+	Max Volume: 		9328
+	Average Volume: 	6349
+	Std.Dev: 			1580.51
+
+packing-500x100x100-b050_graph.part.32
+	Total Volume: 		152155
+	Max Volume: 		6681
+	Average Volume: 	4754.84
+	Std.Dev: 			1342.65
+
+packing-500x100x100-b050_graph.part.64
+	Total Volume: 		222578
+	Max Volume: 		5845
+	Average Volume: 	3477.78
+	Std.Dev: 			1128.26
+
+packing-500x100x100-b050_graph.part.128
+	Total Volume: 		307275
+	Max Volume: 		4626
+	Average Volume: 	2400.59
+	Std.Dev: 			869.21
+
+packing-500x100x100-b050_graph.part.256
+	Total Volume: 		414470
+	Max Volume: 		2932
+	Average Volume: 	1619.02
+	Std.Dev: 			632.29
+
+packing-500x100x100-b050_graph.part.512
+	Total Volume: 		552157
+	Max Volume: 		2091
+	Average Volume: 	1078.43
+	Std.Dev: 			443.67
+
+packing-500x100x100-b050_graph.part.1024
+	Total Volume: 		746215
+	Max Volume: 		1283
+	Average Volume: 	728.73
+	Std.Dev: 			287.29
+

@@ -1,0 +1,30 @@
+heart01_graph.part.2
+	Total Volume: 		161
+	Max Volume: 		83
+	Average Volume: 	80.5
+	Std.Dev: 			2.5
+
+heart01_graph.part.4
+	Total Volume: 		321
+	Max Volume: 		100
+	Average Volume: 	80.25
+	Std.Dev: 			11.95
+
+heart01_graph.part.8
+	Total Volume: 		530
+	Max Volume: 		94
+	Average Volume: 	66.25
+	Std.Dev: 			17.43
+
+heart01_graph.part.16
+	Total Volume: 		809
+	Max Volume: 		75
+	Average Volume: 	50.56
+	Std.Dev: 			13.31
+
+heart01_graph.part.32
+	Total Volume: 		1290
+	Max Volume: 		82
+	Average Volume: 	40.31
+	Std.Dev: 			11.39
+

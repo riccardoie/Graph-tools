@@ -54,7 +54,7 @@ def form_stats(filename, folder, filter):
                   output.write(f"\tPid {pid}: {cut}\n")
             output.write("\n")
 
-def form_volstats(filename, folder):
+def outgoing_volstats(filename, folder):
     #Partition file
     source_folder = f"../{folder}"
 
@@ -106,10 +106,64 @@ def form_volstats(filename, folder):
                     output.write(f"\tPid {pid} Vol: {vol}\n")
                 output.write("\n")
 
-def incoming_volstats(filename, folder):
-        #Partition file
-    source_folder = f"../{folder}"
+# def incoming_volstats(filename, folder):
+#     #Partition file
+#     source_folder = f"../{folder}"
 
+
+#     # if ("nvol" not in folder and "contig" not in folder):
+#     #     source_folder = f"../{folder}_partitions"
+#     results = {}
+#     # Original graph file 
+#     with open(f"../graphs/{filename}") as graph_file:
+#         next(graph_file)
+#         adjacency = [list(map(int, line.split())) for line in graph_file]
+
+#     for partition_file in os.listdir(source_folder):
+#         graph_name = partition_file[:partition_file.find(".")]
+        
+#         # Different graph skip to next
+#         if filename != graph_name:
+#             continue
+        
+#         # Read the partition assignments once
+#         with open(f"{source_folder}/{partition_file}") as file:
+#             size = int(partition_file[partition_file.find("part.") + 5:])
+#             part_of = [int(x) for x in file]
+
+#         # Compute incoming communication volume per partition
+#         partitions = [0] * size
+#         for i, neighbors in enumerate(adjacency):
+#             p = part_of[i]
+#             external = {part_of[n - 1] for n in neighbors if part_of[n - 1] != p}
+#             for ext_p in external:
+#                 partitions[ext_p] += 1
+
+#         results[partition_file] = partitions
+
+#     # Write output
+#     if(folder == "vol"):
+#         os.makedirs(f"output_stats/{folder}_partitions/incoming_vol", exist_ok=True)
+#         with open(f"output_stats/{folder}_partitions/incoming_vol/{folder}_partitions_{filename}_volpartitions", "w") as output:
+#             for key, value in results.items(): 
+#                 output.write(f"{key}\n")
+#                 for pid, vol in enumerate(value):
+#                     output.write(f"\tPid {pid} Vol: {vol}\n")
+#                 output.write("\n")
+
+#     else:
+#         os.makedirs(f"output_stats/{folder}_partitions/incoming_vol/", exist_ok=True)
+#         with open(f"output_stats/{folder}_partitions/incoming_vol/{folder}_{filename}_partitions", "w") as output:
+#             for key, value in results.items(): 
+#                 output.write(f"{key}\n")
+#                 for pid, vol in enumerate(value):
+#                     output.write(f"\tPid {pid} Vol: {vol}\n")
+#                 output.write("\n")
+
+def incoming_volstats(filename, folder):
+    #Partition file
+    source_folder = f"../{folder}"
+    
     # if ("nvol" not in folder and "contig" not in folder):
     #     source_folder = f"../{folder}_partitions"
     results = {}
@@ -130,31 +184,40 @@ def incoming_volstats(filename, folder):
             size = int(partition_file[partition_file.find("part.") + 5:])
             part_of = [int(x) for x in file]
 
-        # Compute incoming communication volume per partition
+        # Compute incoming communication volume and neighbor sets per partition
         partitions = [0] * size
+        neighbor_sets = [set() for _ in range(size)]
         for i, neighbors in enumerate(adjacency):
             p = part_of[i]
             external = {part_of[n - 1] for n in neighbors if part_of[n - 1] != p}
+            # p has edges to every partition in `external`, and each of those
+            # partitions has p as a neighbor in return.
+            neighbor_sets[p].update(external)
             for ext_p in external:
                 partitions[ext_p] += 1
+                neighbor_sets[ext_p].add(p)
 
-        results[partition_file] = partitions
+        unique_neighbors = [len(s) for s in neighbor_sets]
+        results[partition_file] = (partitions, unique_neighbors)
 
     # Write output
     if(folder == "vol"):
         os.makedirs(f"output_stats/{folder}_partitions/incoming_vol", exist_ok=True)
         with open(f"output_stats/{folder}_partitions/incoming_vol/{folder}_partitions_{filename}_volpartitions", "w") as output:
-            for key, value in results.items(): 
+            for key, (vols, neigh) in results.items(): 
                 output.write(f"{key}\n")
-                for pid, vol in enumerate(value):
-                    output.write(f"\tPid {pid} Vol: {vol}\n")
+                for pid, (vol, n) in enumerate(zip(vols, neigh)):
+                    output.write(f"\tPid {pid} Vol: {vol} Neighbors: {n}\n")
                 output.write("\n")
 
     else:
         os.makedirs(f"output_stats/{folder}_partitions/incoming_vol/", exist_ok=True)
         with open(f"output_stats/{folder}_partitions/incoming_vol/{folder}_{filename}_partitions", "w") as output:
-            for key, value in results.items(): 
+            for key, (vols, neigh) in results.items(): 
                 output.write(f"{key}\n")
-                for pid, vol in enumerate(value):
-                    output.write(f"\tPid {pid} Vol: {vol}\n")
+                for pid, (vol, n) in enumerate(zip(vols, neigh)):
+                    output.write(f"\tPid {pid} Vol: {vol} Neighbors: {n}\n")
                 output.write("\n")
+
+
+incoming_volstats("heart01_graph", "nvol_08")

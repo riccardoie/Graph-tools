@@ -38,7 +38,8 @@ def parse_file(path):
 def extract_graph_id(filename):
     prefixes = [
         "vol_partitions_",
-        "nvol_08_",
+        "nvol_08_4_",
+        # "nvol_08_",
     ]
 
     suffixes = [
@@ -88,7 +89,7 @@ def find_matching_files(folder_a, folder_b):
 # ============================================================
 # PLOTTING
 # ============================================================
-def plot_partition(dict_a, dict_b, partition_key, title_a="Folder A", title_b="Folder B"):
+def plot_partition(graph, dict_a, dict_b, partition_key, title_a="Folder A", title_b="Folder B"):
     if partition_key not in dict_a or partition_key not in dict_b:
         available = sorted(set(dict_a.keys()) & set(dict_b.keys()), key=lambda k: int(k))
         raise ValueError(
@@ -105,14 +106,15 @@ def plot_partition(dict_a, dict_b, partition_key, title_a="Folder A", title_b="F
     fig, ax = plt.subplots(figsize=(12, 5))
     x = np.arange(len(a))
     width = 0.35
-
     ax.bar(x - width / 2, a, width, label=title_a)
     ax.bar(x + width / 2, b, width, label=title_b)
+    # ax.set_position([0.15, 0.15, 0.75, 0.75])
 
-    ax.set_title(f"Partition {partition_key}")
-    ax.set_xticks(x)
-    ax.set_xticklabels([str(i) for i in range(len(a))])
-    ax.set_ylabel("Volume")
+    ax.set_title(f"Outgoing communication volumes {graph} k={partition_key}")
+    # ax.set_xticks(x)
+    # ax.set_xticklabels([str(i) for i in range(len(a))])
+    ax.set_xlabel("Partition")
+    ax.set_ylabel("Outgoing communication volume")
     ax.grid(axis="y", linestyle="--", alpha=0.6)
     ax.legend()
 
@@ -156,10 +158,11 @@ def main():
     dict_b = parse_file(os.path.join(folder_b, file_b))
 
     plot_partition(
-        dict_a, dict_b,
+        graph_id,
+        dict_a, dict_b, 
         partition_key=partition_nr,
-        title_a="METIS",
-        title_b=f"{version}"
+        title_a="VOL 3%",
+        title_b="NVOL 4%"
     )
 
 

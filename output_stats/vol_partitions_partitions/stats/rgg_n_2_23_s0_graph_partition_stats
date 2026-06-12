@@ -1,0 +1,66 @@
+rgg_n_2_23_s0_graph.part.2
+	Total Volume: 		8684
+	Max Volume: 		4378
+	Average Volume: 	4342
+	Std.Dev: 			36.0
+
+rgg_n_2_23_s0_graph.part.4
+	Total Volume: 		16556
+	Max Volume: 		4585
+	Average Volume: 	4139
+	Std.Dev: 			285.62
+
+rgg_n_2_23_s0_graph.part.8
+	Total Volume: 		32349
+	Max Volume: 		5944
+	Average Volume: 	4043.62
+	Std.Dev: 			1065.15
+
+rgg_n_2_23_s0_graph.part.16
+	Total Volume: 		50762
+	Max Volume: 		4471
+	Average Volume: 	3172.62
+	Std.Dev: 			700.56
+
+rgg_n_2_23_s0_graph.part.32
+	Total Volume: 		79183
+	Max Volume: 		3303
+	Average Volume: 	2474.47
+	Std.Dev: 			517.68
+
+rgg_n_2_23_s0_graph.part.64
+	Total Volume: 		115996
+	Max Volume: 		2396
+	Average Volume: 	1812.44
+	Std.Dev: 			314.19
+
+rgg_n_2_23_s0_graph.part.128
+	Total Volume: 		171986
+	Max Volume: 		1721
+	Average Volume: 	1343.64
+	Std.Dev: 			216.96
+
+rgg_n_2_23_s0_graph.part.256
+	Total Volume: 		247087
+	Max Volume: 		1299
+	Average Volume: 	965.18
+	Std.Dev: 			136.83
+
+rgg_n_2_23_s0_graph.part.512
+	Total Volume: 		357172
+	Max Volume: 		1054
+	Average Volume: 	697.6
+	Std.Dev: 			87.47
+
+rgg_n_2_23_s0_graph.part.1024
+	Total Volume: 		508451
+	Max Volume: 		726
+	Average Volume: 	496.53
+	Std.Dev: 			61.87
+
+rgg_n_2_23_s0_graph.part.2048
+	Total Volume: 		724476
+	Max Volume: 		519
+	Average Volume: 	353.75
+	Std.Dev: 			43.48
+

@@ -5,8 +5,6 @@ import numpy as np
 import os
 import sys
 
-
-
 def parse_file (file):
 
     partitions = {}
@@ -20,7 +18,7 @@ def parse_file (file):
             if (".part" in line):
 
                 if nr_of_partitions != 0: 
-                    partition_cuts.append(total_ed/2)
+                #     partition_cuts.append(total_ed/2)
                     partitions[nr_of_partitions] = partition_cuts
 
                 nr_of_partitions = line[line.find("part.") + len("part."):].strip()
@@ -33,31 +31,45 @@ def parse_file (file):
 
                 partition_cuts.append(cut)
 
-        partition_cuts.append(total_ed/2)
+        # partition_cuts.append(total_ed/2)
         partitions[nr_of_partitions] = partition_cuts
 
 
     return partitions
               
-def find_files(file):
-
+def find_files(file, type):
     partition_files = []
-    for partition_file in os.listdir("output_stats"):
+    for partition_file in os.listdir("output_stats/cut_partitions"):
+        if(f"_{file}_" in partition_file):
+            partition_files.append(partition_file)
+
+    for partition_file in os.listdir(f"output_stats/{type}/rg-mk_18_02_partitions"):
+        if(f"_{file}_" in partition_file):
+            partition_files.append(partition_file)
+
+    for partition_file in os.listdir(f"output_stats/{type}/rg-mk_19_01_partitions"):
         if(f"_{file}_" in partition_file):
             partition_files.append(partition_file)
 
     for partition_file in partition_files:
-        if ("rg-mk" in partition_file):
-            rg_mk = parse_file(partition_file)
-        else: 
-            cut = parse_file(partition_file)
+        if ("rg-mk_19_01" in partition_file):
+            rg_mk_old = parse_file(f"{type}/rg-mk_19_01_partitions/{partition_file}")
+        elif ("rg-mk_18_02" in partition_file): 
+            rg_mk = parse_file(f"{type}/rg-mk_18_02_partitions/{partition_file}")
+        elif ("cut" in partition_file): 
+            cut = parse_file(f"cut_partitions/{partition_file}")
 
-    compare_dicts_grid(rg_mk, cut, "RG-MK", "CUT")
+    compare_dicts_grid_3(rg_mk, rg_mk_old, cut, "RG-MK(18_02)", "RG-MK-OLD(19_01)", "CUT")
 
-def compare_dicts_grid(dict_a, dict_b, title_a='Approach A', title_b='Approach B'):
+def compare_dicts_grid_3(
+    dict_a, dict_b, dict_c,
+    title_a='Approach A',
+    title_b='Approach B',
+    title_c='Approach C'
+):
     # --- Validation ---
-    if dict_a.keys() != dict_b.keys():
-        raise ValueError("Both dictionaries must have the same keys")
+    if not (dict_a.keys() == dict_b.keys() == dict_c.keys()):
+        raise ValueError("All dictionaries must have the same keys")
 
     # --- Sort keys numerically ---
     keys = sorted(dict_a.keys(), key=lambda k: float(k))
@@ -68,10 +80,7 @@ def compare_dicts_grid(dict_a, dict_b, title_a='Approach A', title_b='Approach B
 
     # --- Helper function for labeling ---
     def make_labels(n):
-        labels = [str(i) for i in range(n)]
-        if n > 0:
-            labels[-1] = "Total Cut"
-        return labels
+        return [str(i) for i in range(n)]
 
     # ==========================
     # SMALL PARTITIONS IN GRID
@@ -88,14 +97,20 @@ def compare_dicts_grid(dict_a, dict_b, title_a='Approach A', title_b='Approach B
             col = i % small_cols
             ax = fig.add_subplot(gs[row, col])
 
-            values_a, values_b = dict_a[key], dict_b[key]
-            if len(values_a) != len(values_b):
+            values_a = dict_a[key]
+            values_b = dict_b[key]
+            values_c = dict_c[key]
+
+            if not (len(values_a) == len(values_b) == len(values_c)):
                 raise ValueError(f"Value lists for key '{key}' must have same length")
 
             x = np.arange(len(values_a))
-            width = 0.4
-            ax.bar(x - width/2, values_a, width, label=title_a, color='skyblue')
-            ax.bar(x + width/2, values_b, width, label=title_b, color='salmon')
+            width = 0.25
+
+            ax.bar(x - width, values_a, width, label=title_a)
+            ax.bar(x,         values_b, width, label=title_b)
+            ax.bar(x + width, values_c, width, label=title_c)
+
             ax.set_title(f'Partition {key}', fontsize=11)
             ax.set_xlabel('Index')
             ax.set_ylabel('Value')
@@ -105,7 +120,11 @@ def compare_dicts_grid(dict_a, dict_b, title_a='Approach A', title_b='Approach B
 
         handles, labels = ax.get_legend_handles_labels()
         fig.legend(handles, labels, loc='upper right', fontsize=10)
-        fig.suptitle('Partition Comparison Grid (Small Partitions)', fontsize=16, y=0.995)
+        fig.suptitle(
+            'Partition Comparison Grid (Small Partitions)',
+            fontsize=16,
+            y=0.995
+        )
         plt.tight_layout()
         plt.show()
 
@@ -113,15 +132,21 @@ def compare_dicts_grid(dict_a, dict_b, title_a='Approach A', title_b='Approach B
     # LARGE PARTITIONS IN SEPARATE WINDOWS
     # ==========================
     for key in large_keys:
-        values_a, values_b = dict_a[key], dict_b[key]
-        if len(values_a) != len(values_b):
+        values_a = dict_a[key]
+        values_b = dict_b[key]
+        values_c = dict_c[key]
+
+        if not (len(values_a) == len(values_b) == len(values_c)):
             raise ValueError(f"Value lists for key '{key}' must have same length")
 
         fig, ax = plt.subplots(figsize=(12, 5))
         x = np.arange(len(values_a))
-        width = 0.4
-        ax.bar(x - width/2, values_a, width, label=title_a, color='skyblue')
-        ax.bar(x + width/2, values_b, width, label=title_b, color='salmon')
+        width = 0.25
+
+        ax.bar(x - width, values_a, width, label=title_a)
+        ax.bar(x,         values_b, width, label=title_b)
+        ax.bar(x + width, values_c, width, label=title_c)
+
         ax.set_title(f'Partition {key}', fontsize=12)
         ax.set_xlabel('Partition Pid')
         ax.set_ylabel('Cut')
@@ -136,12 +161,13 @@ def compare_dicts_grid(dict_a, dict_b, title_a='Approach A', title_b='Approach B
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2 or len(sys.argv) > 2:
-        print(
-            "Usage: python script.py <graph_file>"
-        )
-        sys.exit(1)
+    # if len(sys.argv) < 3 or len(sys.argv) > 3:
+    #     print(
+    #         "Usage: python script.py <graph_file>"
+    #     )
+    #     sys.exit(1)
     
-    graph_filename = sys.argv[1]    
+    graph_filename = sys.argv[1]
+    type = sys.argv[2]    
 
-    find_files(graph_filename)
+    find_files(graph_filename, type)

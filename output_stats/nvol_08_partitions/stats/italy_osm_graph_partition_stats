@@ -1,0 +1,66 @@
+italy_osm_graph.part.2
+	Total Volume: 		136
+	Max Volume: 		68
+	Average Volume: 	68
+	Std.Dev: 			0.0
+
+italy_osm_graph.part.4
+	Total Volume: 		293
+	Max Volume: 		99
+	Average Volume: 	73.25
+	Std.Dev: 			26.04
+
+italy_osm_graph.part.8
+	Total Volume: 		607
+	Max Volume: 		110
+	Average Volume: 	75.88
+	Std.Dev: 			31.57
+
+italy_osm_graph.part.16
+	Total Volume: 		921
+	Max Volume: 		93
+	Average Volume: 	57.56
+	Std.Dev: 			21.61
+
+italy_osm_graph.part.32
+	Total Volume: 		1927
+	Max Volume: 		113
+	Average Volume: 	60.22
+	Std.Dev: 			24.71
+
+italy_osm_graph.part.64
+	Total Volume: 		3106
+	Max Volume: 		144
+	Average Volume: 	48.53
+	Std.Dev: 			24.46
+
+italy_osm_graph.part.128
+	Total Volume: 		4948
+	Max Volume: 		125
+	Average Volume: 	38.66
+	Std.Dev: 			19.65
+
+italy_osm_graph.part.256
+	Total Volume: 		8271
+	Max Volume: 		107
+	Average Volume: 	32.31
+	Std.Dev: 			17.06
+
+italy_osm_graph.part.512
+	Total Volume: 		13173
+	Max Volume: 		120
+	Average Volume: 	25.73
+	Std.Dev: 			14.19
+
+italy_osm_graph.part.1024
+	Total Volume: 		20620
+	Max Volume: 		94
+	Average Volume: 	20.14
+	Std.Dev: 			12.01
+
+italy_osm_graph.part.2048
+	Total Volume: 		31033
+	Max Volume: 		68
+	Average Volume: 	15.15
+	Std.Dev: 			8.84
+

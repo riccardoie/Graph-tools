@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import sys
+import re
 
 
 # ============================================================
@@ -11,6 +12,7 @@ def parse_file(path):
     partitions = {}
     partition_vals = []
     current_part = None
+    PID_LINE = re.compile(r"Pid\s+(\d+)\s+Vol:\s+(\d+)\s+Neighbors:\s+(\d+)")
 
     with open(path) as f:
         for line in f:
@@ -22,9 +24,11 @@ def parse_file(path):
                 current_part = line.split(".part.")[-1]
                 partition_vals = []
 
-            elif line.startswith("Pid") and "Vol:" in line:
-                val = int(line.split("Vol:")[-1].strip())
-                partition_vals.append(val)
+            elif line.startswith("Pid"):
+                m = PID_LINE.search(line)
+                if m:
+                    partition_vals.append(int(m.group(2)))
+                    # nbr_vals.append(int(m.group(3)))
 
         if current_part is not None:
             partitions[current_part] = partition_vals
@@ -38,7 +42,8 @@ def parse_file(path):
 def extract_graph_id(filename):
     prefixes = [
         "vol_partitions_",
-        "nvol_08_",
+        "nvol_08_4_",
+        # "nvol_08_",
     ]
 
     suffixes = [
@@ -109,7 +114,7 @@ def plot_partition(dict_a, dict_b, partition_key, title_a="Folder A", title_b="F
     ax.bar(x - width / 2, a, width, label=title_a)
     ax.bar(x + width / 2, b, width, label=title_b)
 
-    ax.set_title(f"Partition {partition_key}")
+    ax.set_title(f"coPapersDBLP k={partition_key}")
     ax.set_xticks(x)
     ax.set_xticklabels([str(i) for i in range(len(a))])
     ax.set_ylabel("Volume")
@@ -159,7 +164,7 @@ def main():
         dict_a, dict_b,
         partition_key=partition_nr,
         title_a="METIS",
-        title_b=f"{version}"
+        title_b=f"NVOL 4%"
     )
 
 

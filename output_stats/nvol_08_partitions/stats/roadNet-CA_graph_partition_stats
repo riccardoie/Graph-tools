@@ -1,0 +1,60 @@
+roadNet-CA_graph.part.2
+	Total Volume: 		354
+	Max Volume: 		177
+	Average Volume: 	177
+	Std.Dev: 			0.0
+
+roadNet-CA_graph.part.4
+	Total Volume: 		929
+	Max Volume: 		330
+	Average Volume: 	232.25
+	Std.Dev: 			83.49
+
+roadNet-CA_graph.part.8
+	Total Volume: 		1855
+	Max Volume: 		315
+	Average Volume: 	231.88
+	Std.Dev: 			52.32
+
+roadNet-CA_graph.part.16
+	Total Volume: 		3126
+	Max Volume: 		254
+	Average Volume: 	195.38
+	Std.Dev: 			39.32
+
+roadNet-CA_graph.part.32
+	Total Volume: 		5248
+	Max Volume: 		249
+	Average Volume: 	164
+	Std.Dev: 			41.91
+
+roadNet-CA_graph.part.64
+	Total Volume: 		8807
+	Max Volume: 		254
+	Average Volume: 	137.61
+	Std.Dev: 			42.7
+
+roadNet-CA_graph.part.128
+	Total Volume: 		14050
+	Max Volume: 		219
+	Average Volume: 	109.77
+	Std.Dev: 			31.61
+
+roadNet-CA_graph.part.256
+	Total Volume: 		22251
+	Max Volume: 		182
+	Average Volume: 	86.92
+	Std.Dev: 			24.69
+
+roadNet-CA_graph.part.512
+	Total Volume: 		34117
+	Max Volume: 		126
+	Average Volume: 	66.63
+	Std.Dev: 			18.91
+
+roadNet-CA_graph.part.1024
+	Total Volume: 		52064
+	Max Volume: 		105
+	Average Volume: 	50.84
+	Std.Dev: 			15.0
+

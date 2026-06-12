@@ -1,4 +1,3 @@
-import csv
 import os
 
 def translate(file):
@@ -13,7 +12,6 @@ def translate(file):
         # Parse header
         header = line.split()
         nr_of_vertices = int(header[0])
-        # nnz = int(header[2])  # each edge listed twice in symmetric format
 
         # Parse edges
         for line in f:
@@ -36,8 +34,9 @@ def translate(file):
     # Write METIS file
     os.makedirs("../graphs", exist_ok=True)
     with open(f"../graphs/{file}_graph", "w") as f:
-        f.write(f"{nr_of_vertices} {len(edges)} 000\n")
+        f.write(f"{nr_of_vertices} {len(edges)}\n")
         for neighbors in adj:
             f.write(" ".join(map(str, sorted(neighbors))) + "\n")
 
-translate("coPapersDBLP")
+# translate("delaunay_n23")
+# translate("packing-500x100x100-b050")

@@ -1,0 +1,54 @@
+heart04_graph.part.2
+	Total Volume: 		9224
+	Max Volume: 		4612
+	Average Volume: 	4612
+	Std.Dev: 			0.0
+
+heart04_graph.part.4
+	Total Volume: 		17191
+	Max Volume: 		4635
+	Average Volume: 	4297.75
+	Std.Dev: 			482.76
+
+heart04_graph.part.8
+	Total Volume: 		25957
+	Max Volume: 		4106
+	Average Volume: 	3244.62
+	Std.Dev: 			800.23
+
+heart04_graph.part.16
+	Total Volume: 		40857
+	Max Volume: 		3427
+	Average Volume: 	2553.56
+	Std.Dev: 			537.77
+
+heart04_graph.part.32
+	Total Volume: 		60514
+	Max Volume: 		2666
+	Average Volume: 	1891.06
+	Std.Dev: 			499.65
+
+heart04_graph.part.64
+	Total Volume: 		87853
+	Max Volume: 		1970
+	Average Volume: 	1372.7
+	Std.Dev: 			336.7
+
+heart04_graph.part.128
+	Total Volume: 		127645
+	Max Volume: 		1370
+	Average Volume: 	997.23
+	Std.Dev: 			231.6
+
+heart04_graph.part.256
+	Total Volume: 		181863
+	Max Volume: 		958
+	Average Volume: 	710.4
+	Std.Dev: 			156.13
+
+heart04_graph.part.512
+	Total Volume: 		254603
+	Max Volume: 		689
+	Average Volume: 	497.27
+	Std.Dev: 			103.9
+

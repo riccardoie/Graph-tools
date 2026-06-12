@@ -1,0 +1,30 @@
+channel-500x100x100-b050_graph.part.2
+	Total Volume: 		19825
+	Max Volume: 		9916
+	Average Volume: 	9912.5
+	Std.Dev: 			3.5
+
+channel-500x100x100-b050_graph.part.4
+	Total Volume: 		61572
+	Max Volume: 		20829
+	Average Volume: 	15393
+	Std.Dev: 			5218.46
+
+channel-500x100x100-b050_graph.part.8
+	Total Volume: 		141194
+	Max Volume: 		20988
+	Average Volume: 	17649.25
+	Std.Dev: 			4495.87
+
+channel-500x100x100-b050_graph.part.16
+	Total Volume: 		250084
+	Max Volume: 		17749
+	Average Volume: 	15630.25
+	Std.Dev: 			2270.85
+
+channel-500x100x100-b050_graph.part.32
+	Total Volume: 		361829
+	Max Volume: 		13197
+	Average Volume: 	11307.16
+	Std.Dev: 			1418.07
+

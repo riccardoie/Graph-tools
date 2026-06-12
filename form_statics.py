@@ -1,5 +1,6 @@
 import os 
 import statistics
+from statistics import pstdev
 import re
 import csv
 
@@ -80,4 +81,73 @@ def write_csv(partitions, folder, output_file):
 
 
 
+def graph_stats(graph):
+
+    path = f"../graphs/{graph}_graph"
+
+    with open(path, "r") as f:
+        # Skip blank lines and comments to find the header.
+        header = None
+        for line in f:
+            s = line.strip()
+            if not s or s.startswith("%"):
+                continue
+            header = s.split()
+            break
+        if header is None:
+            raise ValueError("Empty METIS file (no header found).")
+
+        n = int(header[0])
+        fmt = header[2].zfill(3) if len(header) >= 3 else "000"
+        ncon = int(header[3]) if len(header) >= 4 else 1
+
+        has_vsize = fmt[0] == "1"
+        has_vwgt  = fmt[1] == "1"
+        has_ewgt  = fmt[2] == "1"
+
+        counts = []
+        for line in f:
+            # IMPORTANT: do NOT skip blank lines here — a blank line is a
+            # legitimate vertex with zero neighbors. Only skip comments.
+            if line.lstrip().startswith("%"):
+                continue
+
+            tokens = line.split()  # empty line -> []
+
+            idx = 0
+            if has_vsize:
+                idx += 1
+            if has_vwgt:
+                idx += ncon
+            payload = tokens[idx:]
+
+            nbr_count = len(payload) // 2 if has_ewgt else len(payload)
+            counts.append(nbr_count)
+
+            if len(counts) == n:
+                break
+
+        if len(counts) != n:
+            raise ValueError(
+                f"Header declared {n} vertices, but only {len(counts)} "
+                f"adjacency lines were found."
+            )
+        
+        n_max = max(counts)
+        n_min = min(counts)
+        # Population std dev — every vertex is observed, not a sample.
+        sigma = pstdev(counts) if len(counts) > 1 else 0.0
+        mean = sum(counts) / len(counts)
+        print(graph)
+        print(f"Vertices       : {len(counts)}")
+        print(f"Max neighbors  : {n_max}")
+        print(f"Min neighbors  : {n_min}")
+        print(f"Mean neighbors : {mean:.4f}")
+        print(f"Std dev (pop.) : {sigma:.4f}")
+
+
+# "kron_g500-logn19"
+# graph_stats("heart07")
 # form_stats("vol")
+# graph_stats("delaunay_n23")
+# graph_stats("packing-500x100x100-b050")

@@ -1,0 +1,54 @@
+coPapersDBLP_graph.part.2
+	Total Volume: 		241973
+	Max Volume: 		121428
+	Average Volume: 	120986.5
+	Std.Dev: 			441.5
+
+coPapersDBLP_graph.part.4
+	Total Volume: 		467020
+	Max Volume: 		118679
+	Average Volume: 	116755
+	Std.Dev: 			3332.47
+
+coPapersDBLP_graph.part.8
+	Total Volume: 		763327
+	Max Volume: 		95416
+	Average Volume: 	95415.88
+	Std.Dev: 			0.33
+
+coPapersDBLP_graph.part.16
+	Total Volume: 		1074512
+	Max Volume: 		67713
+	Average Volume: 	67157
+	Std.Dev: 			2149.25
+
+coPapersDBLP_graph.part.32
+	Total Volume: 		1367111
+	Max Volume: 		43797
+	Average Volume: 	42722.22
+	Std.Dev: 			2589.48
+
+coPapersDBLP_graph.part.64
+	Total Volume: 		1782591
+	Max Volume: 		31447
+	Average Volume: 	27852.98
+	Std.Dev: 			4578.07
+
+coPapersDBLP_graph.part.128
+	Total Volume: 		1746897
+	Max Volume: 		17002
+	Average Volume: 	13647.63
+	Std.Dev: 			3326.38
+
+coPapersDBLP_graph.part.256
+	Total Volume: 		1825533
+	Max Volume: 		10217
+	Average Volume: 	7130.99
+	Std.Dev: 			2110.67
+
+coPapersDBLP_graph.part.512
+	Total Volume: 		1986634
+	Max Volume: 		6395
+	Average Volume: 	3880.14
+	Std.Dev: 			1345.09
+

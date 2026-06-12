@@ -1,0 +1,60 @@
+kmer_V2a_graph.part.2
+	Total Volume: 		271834
+	Max Volume: 		135917
+	Average Volume: 	135917
+	Std.Dev: 			0.0
+
+kmer_V2a_graph.part.4
+	Total Volume: 		451878
+	Max Volume: 		112970
+	Average Volume: 	112969.5
+	Std.Dev: 			0.87
+
+kmer_V2a_graph.part.8
+	Total Volume: 		578168
+	Max Volume: 		72626
+	Average Volume: 	72271
+	Std.Dev: 			938.49
+
+kmer_V2a_graph.part.16
+	Total Volume: 		686150
+	Max Volume: 		51334
+	Average Volume: 	42884.38
+	Std.Dev: 			4766.56
+
+kmer_V2a_graph.part.32
+	Total Volume: 		762677
+	Max Volume: 		39978
+	Average Volume: 	23833.66
+	Std.Dev: 			5337.58
+
+kmer_V2a_graph.part.64
+	Total Volume: 		784566
+	Max Volume: 		24695
+	Average Volume: 	12258.84
+	Std.Dev: 			3540.9
+
+kmer_V2a_graph.part.128
+	Total Volume: 		879503
+	Max Volume: 		24920
+	Average Volume: 	6871.12
+	Std.Dev: 			3695.66
+
+kmer_V2a_graph.part.256
+	Total Volume: 		1055413
+	Max Volume: 		20510
+	Average Volume: 	4122.71
+	Std.Dev: 			3433.49
+
+kmer_V2a_graph.part.512
+	Total Volume: 		1247324
+	Max Volume: 		13970
+	Average Volume: 	2436.18
+	Std.Dev: 			2511.34
+
+kmer_V2a_graph.part.1024
+	Total Volume: 		1463111
+	Max Volume: 		8901
+	Average Volume: 	1428.82
+	Std.Dev: 			1556.48
+

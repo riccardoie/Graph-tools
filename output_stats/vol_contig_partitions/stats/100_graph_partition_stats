@@ -1,0 +1,36 @@
+100_graph.part.2
+	Total Volume: 		200
+	Max Volume: 		100
+	Average Volume: 	100
+	Std.Dev: 			0.0
+
+100_graph.part.4
+	Total Volume: 		390
+	Max Volume: 		104
+	Average Volume: 	97.5
+	Std.Dev: 			4.03
+
+100_graph.part.8
+	Total Volume: 		650
+	Max Volume: 		110
+	Average Volume: 	81.25
+	Std.Dev: 			22.63
+
+100_graph.part.16
+	Total Volume: 		1077
+	Max Volume: 		90
+	Average Volume: 	67.31
+	Std.Dev: 			13.22
+
+100_graph.part.32
+	Total Volume: 		1629
+	Max Volume: 		65
+	Average Volume: 	50.91
+	Std.Dev: 			10.77
+
+100_graph.part.64
+	Total Volume: 		2376
+	Max Volume: 		50
+	Average Volume: 	37.12
+	Std.Dev: 			6.25
+

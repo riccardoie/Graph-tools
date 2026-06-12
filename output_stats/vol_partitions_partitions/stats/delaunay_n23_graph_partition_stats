@@ -1,0 +1,66 @@
+delaunay_n23_graph.part.2
+	Total Volume: 		5672
+	Max Volume: 		2838
+	Average Volume: 	2836
+	Std.Dev: 			2.0
+
+delaunay_n23_graph.part.4
+	Total Volume: 		11476
+	Max Volume: 		3104
+	Average Volume: 	2869
+	Std.Dev: 			208.4
+
+delaunay_n23_graph.part.8
+	Total Volume: 		21243
+	Max Volume: 		3611
+	Average Volume: 	2655.38
+	Std.Dev: 			721.39
+
+delaunay_n23_graph.part.16
+	Total Volume: 		33997
+	Max Volume: 		2934
+	Average Volume: 	2124.81
+	Std.Dev: 			489.19
+
+delaunay_n23_graph.part.32
+	Total Volume: 		52869
+	Max Volume: 		2213
+	Average Volume: 	1652.16
+	Std.Dev: 			342.53
+
+delaunay_n23_graph.part.64
+	Total Volume: 		78095
+	Max Volume: 		1628
+	Average Volume: 	1220.23
+	Std.Dev: 			205.96
+
+delaunay_n23_graph.part.128
+	Total Volume: 		116135
+	Max Volume: 		1118
+	Average Volume: 	907.3
+	Std.Dev: 			134.92
+
+delaunay_n23_graph.part.256
+	Total Volume: 		166993
+	Max Volume: 		834
+	Average Volume: 	652.32
+	Std.Dev: 			85.0
+
+delaunay_n23_graph.part.512
+	Total Volume: 		238641
+	Max Volume: 		600
+	Average Volume: 	466.1
+	Std.Dev: 			51.21
+
+delaunay_n23_graph.part.1024
+	Total Volume: 		338697
+	Max Volume: 		430
+	Average Volume: 	330.76
+	Std.Dev: 			31.92
+
+delaunay_n23_graph.part.2048
+	Total Volume: 		480611
+	Max Volume: 		340
+	Average Volume: 	234.67
+	Std.Dev: 			21.48
+

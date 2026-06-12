@@ -10,16 +10,19 @@ if len(sys.argv) != 3:
     print("Usage: python compare_cut_comm.py <path_to_A_stats> <path_to_B_stats>")
     sys.exit(1)
 
-DIR_A = f"../{sys.argv[1]}_partitions/stats"
-DIR_B = f"../{sys.argv[2]}_partitions/stats"
+DIR_A = f"../{sys.argv[1]}/stats"
+DIR_B = f"../{sys.argv[2]}/stats"
 
 # Regex to extract the fields
 edgecut_re = re.compile(r"Edgecut:\s*([\d.]+)")
 commvol_re = re.compile(r"Communication Vol\.\s*:\s*([\d.]+)")
 
 # Filename parsing regexes
-first_num_re = re.compile(r"^(\d+)")
-second_num_re = re.compile(r"graph_(\d+)_stats(?:\.txt)?$")
+# first_num_re = re.compile(r"^(\d+)")
+# second_num_re = re.compile(r"graph_(\d+)_stats(?:\.txt)?$")
+first_num_re = re.compile(r"^heart(\d+)_graph_\d+_stats(?:\.txt)?$")
+second_num_re = re.compile(r"^heart\d+_graph_(\d+)_stats(?:\.txt)?$")
+
 
 def parse_filename_numbers(filename):
     """Extract (first_number, second_number) for sorting."""
@@ -53,8 +56,18 @@ def parse_stats(filepath):
 
 def main():
     # Load files
-    files_a = [f for f in os.listdir(DIR_A) if os.path.isfile(os.path.join(DIR_A, f))]
-    files_b = [f for f in os.listdir(DIR_B) if os.path.isfile(os.path.join(DIR_B, f))]
+    # files_a = [f for f in os.listdir(DIR_A) if os.path.isfile(os.path.join(DIR_A, f))]
+    # files_b = [f for f in os.listdir(DIR_B) if os.path.isfile(os.path.join(DIR_B, f))]
+
+    files_a = [
+    f for f in os.listdir(DIR_A)
+    if os.path.isfile(os.path.join(DIR_A, f)) and "heart" in f.lower()
+    ]
+
+    files_b = [
+        f for f in os.listdir(DIR_B)
+        if os.path.isfile(os.path.join(DIR_B, f)) and "heart" in f.lower()
+    ]
 
     # Intersect
     common = sorted(set(files_a) & set(files_b))
@@ -101,7 +114,7 @@ def main():
         writer.writerow(csv_header)
         writer.writerows(csv_rows)
 
-    print("CSV file written: comparison_output.csv")
+    # print("CSV file written: comparison_output.csv")
 
     # --- Plot percent differences ---
     filenames = []

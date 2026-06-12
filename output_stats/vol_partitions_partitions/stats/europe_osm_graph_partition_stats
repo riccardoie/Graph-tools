@@ -1,0 +1,72 @@
+europe_osm_graph.part.2
+	Total Volume: 		490
+	Max Volume: 		246
+	Average Volume: 	245
+	Std.Dev: 			1.0
+
+europe_osm_graph.part.4
+	Total Volume: 		989
+	Max Volume: 		367
+	Average Volume: 	247.25
+	Std.Dev: 			83.5
+
+europe_osm_graph.part.8
+	Total Volume: 		1909
+	Max Volume: 		547
+	Average Volume: 	238.62
+	Std.Dev: 			151.45
+
+europe_osm_graph.part.16
+	Total Volume: 		2913
+	Max Volume: 		382
+	Average Volume: 	182.06
+	Std.Dev: 			112.67
+
+europe_osm_graph.part.32
+	Total Volume: 		4684
+	Max Volume: 		320
+	Average Volume: 	146.38
+	Std.Dev: 			83.16
+
+europe_osm_graph.part.64
+	Total Volume: 		7377
+	Max Volume: 		276
+	Average Volume: 	115.27
+	Std.Dev: 			67.1
+
+europe_osm_graph.part.128
+	Total Volume: 		12225
+	Max Volume: 		228
+	Average Volume: 	95.51
+	Std.Dev: 			52.53
+
+europe_osm_graph.part.256
+	Total Volume: 		19315
+	Max Volume: 		172
+	Average Volume: 	75.45
+	Std.Dev: 			37.66
+
+europe_osm_graph.part.512
+	Total Volume: 		30329
+	Max Volume: 		162
+	Average Volume: 	59.24
+	Std.Dev: 			29.22
+
+europe_osm_graph.part.1024
+	Total Volume: 		49068
+	Max Volume: 		150
+	Average Volume: 	47.92
+	Std.Dev: 			23.16
+
+europe_osm_graph.part.2048
+	Total Volume: 		79213
+	Max Volume: 		170
+	Average Volume: 	38.68
+	Std.Dev: 			18.97
+
+europe_osm_graph.part.4086
+	Total Volume: 		122588
+	Max Volume: 		124
+	Average Volume: 	30.0
+	Std.Dev: 			14.93
+

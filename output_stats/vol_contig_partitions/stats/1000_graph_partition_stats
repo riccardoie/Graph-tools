@@ -1,0 +1,54 @@
+1000_graph.part.2
+	Total Volume: 		2000
+	Max Volume: 		1000
+	Average Volume: 	1000
+	Std.Dev: 			0.0
+
+1000_graph.part.4
+	Total Volume: 		3971
+	Max Volume: 		1120
+	Average Volume: 	992.75
+	Std.Dev: 			79.02
+
+1000_graph.part.8
+	Total Volume: 		7664
+	Max Volume: 		1328
+	Average Volume: 	958
+	Std.Dev: 			271.21
+
+1000_graph.part.16
+	Total Volume: 		11247
+	Max Volume: 		947
+	Average Volume: 	702.94
+	Std.Dev: 			155.62
+
+1000_graph.part.32
+	Total Volume: 		17455
+	Max Volume: 		672
+	Average Volume: 	545.47
+	Std.Dev: 			99.48
+
+1000_graph.part.64
+	Total Volume: 		25592
+	Max Volume: 		472
+	Average Volume: 	399.88
+	Std.Dev: 			60.64
+
+1000_graph.part.128
+	Total Volume: 		36503
+	Max Volume: 		390
+	Average Volume: 	285.18
+	Std.Dev: 			43.77
+
+1000_graph.part.256
+	Total Volume: 		52210
+	Max Volume: 		264
+	Average Volume: 	203.95
+	Std.Dev: 			25.23
+
+1000_graph.part.512
+	Total Volume: 		73185
+	Max Volume: 		199
+	Average Volume: 	142.94
+	Std.Dev: 			15.92
+

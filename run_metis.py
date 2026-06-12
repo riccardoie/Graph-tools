@@ -1,6 +1,6 @@
-import subprocess
-import os
-import shutil
+# import subprocess
+# import os
+# import shutil
 
 #Given a graph file stored in a folder graphs with the relative path ../graphs This script will 
 #run metis with the described type (cut or rg-mk). The output will be parsed and stored in a txt
@@ -9,62 +9,115 @@ import shutil
 #The script will over an array so several files can be passed at once. For now the number of 
 #partitions is capped to the array partitions below, might change this later. 
 
-files_grid = ["4_graph", "10_graph", "15_graph", "20_graph", "100_graph", "1000_graph"]
-files_cube = ["3_cube_graph", "5_cube_graph", "10_cube_graph", "100_cube_graph"]
-files_heart = ["heart01_graph", "heart02_graph", "heart03_graph", "heart04_graph", "heart05_graph","heart06_graph"]
-# glisne_matrixes = ["fe_tooth_graph", "roadNet-CA_graph","channel-500x100x100-b050_graph", "hugetric-00000_graph", "hugetric-00020_graph", "hugetrace-00020_graph","kmer_U1a_graph", "kmer_V2a_graph"]
-glisne_matrixes = ["fe_tooth_graph", "roadNet-CA_graph","channel-500x100x100-b050_graph", "hugetric-00000_graph", "hugetric-00020_graph",]
+import multiprocessing
+import subprocess
+import os
+import shutil
 
-# glisne_matrixes = ["Spielman_k400_graph"]
-# glisne_matrixes = ["kmer_U1a_graph"]
-# glisne_matrixes = ["fe_tooth_graph"]
-# glisne_matrixes = ["citationCiteseer_graph"]
-# glisne_matrixes = ["hugetric-00000_graph", "hugetric-00020_graph"]
+partitions = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024] 
+# partitions = [2048]
 
-partitions = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
-# partitions = [2, 4, 8, 16, 32]
+# partitions = [512,1024]
+
+def build_command(type, file, partition):
+    base = ["gpmetis", f"../graphs/{file}", str(partition)]
+    if type == "rg-mk":
+        return base + ["-objtype=rg-mk"]
+    elif type == "cut":
+        return base
+    elif type == "nvol":
+        return base + ["-objtype=nvol"] # , "-ufactor=40"
+    elif type == "nvol_4":
+        return base + ["-objtype=nvol" , "-ufactor=40"]
+    elif type == "vol":
+        return base + ["-objtype=vol"]
+    else:
+        raise ValueError(f"Unknown type: {type}")
 
 
-def run_metis(type, files, folder):
+def run_one(args):
+    """Worker: run one METIS call and parse its output."""
+    type, file, partition, folder = args
+    command = build_command(type, file, partition)
+    result = subprocess.run(command, capture_output=True, text=True)
+    parse_result(result, folder, f"{file}_{partition}_stats")
+    return (file, partition, result.returncode)
+
+
+def build_jobs(type, files, folder):
+    """Precompute the full list of (file, partition) work units."""
+    jobs = []
+    for file in files:
+        with open(f"../graphs/{file}", "r") as tmp:
+            n = int(tmp.readline().strip().split()[0])
+        for partition in partitions:
+            if not n >= partition * partition:
+                break
+            jobs.append((type, file, partition, folder))
+    return jobs
+
+
+def run_metis(type, files, folder, num_workers=None):
     path = f"../{folder}"
     os.makedirs(path, exist_ok=True)
     os.makedirs(f"{path}/stats", exist_ok=True)
-    for file in files: 
-        with open(f"../graphs/{file}", 'r') as tmp:
-            first_line = tmp.readline().strip().split() # Read the first line and remove whitespace
-        
-        print(str(file))
-        n = int(first_line[0])
 
-        for partition in partitions:
+    jobs = build_jobs(type, files, folder)
 
-            if(not n >= partition * partition):
-                break
+    if num_workers is None:
+        num_workers = max(1, (os.cpu_count() or 2) - 1)
 
-            if type == "rg-mk":
-                command = ["gpmetis", f"../graphs/{file}", str(partition), "-objtype=rg-mk"]
-                result = subprocess.run(command, capture_output=True, text=True)
-                parse_result(result, folder, f"{file}_{str(partition)}_stats")
-                # parse_iterations(result, "rg-mk_partitions", f"{file}_{str(partition)}_stats")
-            elif type == "cut":
-                command = ["gpmetis", f"../graphs/{file}", str(partition)]
-                result = subprocess.run(command, capture_output=True, text=True)
-                parse_result(result, folder, f"{file}_{str(partition)}_stats")
-                # parse_iterations(result, "cut_partitions", f"{file}_{str(partition)}_stats")
-            elif type == "nvol":
-                command = ["gpmetis", f"../graphs/{file}", str(partition), "-objtype=nvol"]
-                result = subprocess.run(command, capture_output=True, text=True)
-                parse_result(result, folder, f"{file}_{str(partition)}_stats")
-            elif type == "vol":
-                command = ["gpmetis", f"../graphs/{file}", str(partition), "-objtype=vol"]
-                result = subprocess.run(command, capture_output=True, text=True)
-                parse_result(result, folder, f"{file}_{str(partition)}_stats")
-            else:
-                print("WRONG TYPE")
+    print(f"Running {len(jobs)} jobs with {num_workers} workers")
 
-        print(f"Finished {file}")
+    with multiprocessing.Pool(num_workers) as pool:
+        for i, (file, partition, rc) in enumerate(
+            pool.imap_unordered(run_one, jobs), 1
+        ):
+            status = "ok" if rc == 0 else f"rc={rc}"
+            print(f"[{i}/{len(jobs)}] {file} p={partition}: {status}")
 
     move_files(folder)
+
+# def run_metis(type, files, folder):
+#     path = f"../{folder}"
+#     os.makedirs(path, exist_ok=True)
+#     os.makedirs(f"{path}/stats", exist_ok=True)
+#     for file in files: 
+#         with open(f"../graphs/{file}", 'r') as tmp:
+#             first_line = tmp.readline().strip().split() # Read the first line and remove whitespace
+        
+#         print(str(file))
+#         n = int(first_line[0])
+
+#         for partition in partitions:
+
+#             if(not n >= partition * partition):
+#                 break
+
+#             if type == "rg-mk":
+#                 command = ["gpmetis", f"../graphs/{file}", str(partition), "-objtype=rg-mk"]
+#                 result = subprocess.run(command, capture_output=True, text=True)
+#                 parse_result(result, folder, f"{file}_{str(partition)}_stats")
+#                 # parse_iterations(result, "rg-mk_partitions", f"{file}_{str(partition)}_stats")
+#             elif type == "cut":
+#                 command = ["gpmetis", f"../graphs/{file}", str(partition)]
+#                 result = subprocess.run(command, capture_output=True, text=True)
+#                 parse_result(result, folder, f"{file}_{str(partition)}_stats")
+#                 # parse_iterations(result, "cut_partitions", f"{file}_{str(partition)}_stats")
+#             elif type == "nvol":
+#                 command = ["gpmetis", f"../graphs/{file}", str(partition), "-objtype=nvol", "-ufactor=40"] # , "-ufactor=40"
+#                 result = subprocess.run(command, capture_output=True, text=True)
+#                 parse_result(result, folder, f"{file}_{str(partition)}_stats")
+#             elif type == "vol":
+#                 command = ["gpmetis", f"../graphs/{file}", str(partition), "-objtype=vol"]
+#                 result = subprocess.run(command, capture_output=True, text=True)
+#                 parse_result(result, folder, f"{file}_{str(partition)}_stats")
+#             else:
+#                 print("WRONG TYPE")
+
+#         print(f"Finished {file}")
+
+#     move_files(folder)
         
 def parse_iterations(output, destination, file):
     

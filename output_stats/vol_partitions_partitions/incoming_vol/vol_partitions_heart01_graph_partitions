@@ -1,0 +1,72 @@
+heart01_graph.part.2
+	Pid 0 Vol: 77 Neighbors: 1
+	Pid 1 Vol: 76 Neighbors: 1
+
+heart01_graph.part.32
+	Pid 0 Vol: 69 Neighbors: 10
+	Pid 1 Vol: 44 Neighbors: 6
+	Pid 2 Vol: 34 Neighbors: 4
+	Pid 3 Vol: 55 Neighbors: 7
+	Pid 4 Vol: 45 Neighbors: 5
+	Pid 5 Vol: 38 Neighbors: 5
+	Pid 6 Vol: 42 Neighbors: 6
+	Pid 7 Vol: 30 Neighbors: 4
+	Pid 8 Vol: 29 Neighbors: 3
+	Pid 9 Vol: 41 Neighbors: 6
+	Pid 10 Vol: 41 Neighbors: 5
+	Pid 11 Vol: 42 Neighbors: 6
+	Pid 12 Vol: 42 Neighbors: 6
+	Pid 13 Vol: 45 Neighbors: 5
+	Pid 14 Vol: 58 Neighbors: 9
+	Pid 15 Vol: 56 Neighbors: 8
+	Pid 16 Vol: 31 Neighbors: 5
+	Pid 17 Vol: 28 Neighbors: 4
+	Pid 18 Vol: 24 Neighbors: 2
+	Pid 19 Vol: 43 Neighbors: 5
+	Pid 20 Vol: 40 Neighbors: 6
+	Pid 21 Vol: 43 Neighbors: 7
+	Pid 22 Vol: 42 Neighbors: 4
+	Pid 23 Vol: 24 Neighbors: 3
+	Pid 24 Vol: 29 Neighbors: 4
+	Pid 25 Vol: 46 Neighbors: 6
+	Pid 26 Vol: 39 Neighbors: 6
+	Pid 27 Vol: 37 Neighbors: 4
+	Pid 28 Vol: 44 Neighbors: 6
+	Pid 29 Vol: 38 Neighbors: 5
+	Pid 30 Vol: 39 Neighbors: 6
+	Pid 31 Vol: 50 Neighbors: 6
+
+heart01_graph.part.8
+	Pid 0 Vol: 39 Neighbors: 3
+	Pid 1 Vol: 65 Neighbors: 5
+	Pid 2 Vol: 50 Neighbors: 4
+	Pid 3 Vol: 76 Neighbors: 5
+	Pid 4 Vol: 52 Neighbors: 4
+	Pid 5 Vol: 82 Neighbors: 5
+	Pid 6 Vol: 72 Neighbors: 5
+	Pid 7 Vol: 97 Neighbors: 5
+
+heart01_graph.part.4
+	Pid 0 Vol: 71 Neighbors: 3
+	Pid 1 Vol: 70 Neighbors: 3
+	Pid 2 Vol: 100 Neighbors: 3
+	Pid 3 Vol: 69 Neighbors: 3
+
+heart01_graph.part.16
+	Pid 0 Vol: 54 Neighbors: 5
+	Pid 1 Vol: 59 Neighbors: 6
+	Pid 2 Vol: 50 Neighbors: 5
+	Pid 3 Vol: 74 Neighbors: 8
+	Pid 4 Vol: 49 Neighbors: 5
+	Pid 5 Vol: 37 Neighbors: 3
+	Pid 6 Vol: 54 Neighbors: 6
+	Pid 7 Vol: 67 Neighbors: 6
+	Pid 8 Vol: 45 Neighbors: 5
+	Pid 9 Vol: 57 Neighbors: 7
+	Pid 10 Vol: 46 Neighbors: 4
+	Pid 11 Vol: 39 Neighbors: 4
+	Pid 12 Vol: 26 Neighbors: 3
+	Pid 13 Vol: 69 Neighbors: 6
+	Pid 14 Vol: 48 Neighbors: 4
+	Pid 15 Vol: 32 Neighbors: 3
+

@@ -1,0 +1,60 @@
+kmer_U1a_graph.part.2
+	Total Volume: 		503166
+	Max Volume: 		251840
+	Average Volume: 	251583
+	Std.Dev: 			257.0
+
+kmer_U1a_graph.part.4
+	Total Volume: 		826591
+	Max Volume: 		215164
+	Average Volume: 	206647.75
+	Std.Dev: 			6024.4
+
+kmer_U1a_graph.part.8
+	Total Volume: 		1053069
+	Max Volume: 		145762
+	Average Volume: 	131633.62
+	Std.Dev: 			7402.57
+
+kmer_U1a_graph.part.16
+	Total Volume: 		1215225
+	Max Volume: 		89238
+	Average Volume: 	75951.56
+	Std.Dev: 			4495.92
+
+kmer_U1a_graph.part.32
+	Total Volume: 		1308087
+	Max Volume: 		52002
+	Average Volume: 	40877.72
+	Std.Dev: 			3260.57
+
+kmer_U1a_graph.part.64
+	Total Volume: 		1373105
+	Max Volume: 		27727
+	Average Volume: 	21454.77
+	Std.Dev: 			1625.83
+
+kmer_U1a_graph.part.128
+	Total Volume: 		1418748
+	Max Volume: 		14735
+	Average Volume: 	11083.97
+	Std.Dev: 			1004.99
+
+kmer_U1a_graph.part.256
+	Total Volume: 		1447913
+	Max Volume: 		7719
+	Average Volume: 	5655.91
+	Std.Dev: 			480.27
+
+kmer_U1a_graph.part.512
+	Total Volume: 		1471971
+	Max Volume: 		4553
+	Average Volume: 	2874.94
+	Std.Dev: 			306.2
+
+kmer_U1a_graph.part.1024
+	Total Volume: 		1494321
+	Max Volume: 		2566
+	Average Volume: 	1459.3
+	Std.Dev: 			176.95
+

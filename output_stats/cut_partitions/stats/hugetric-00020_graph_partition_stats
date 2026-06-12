@@ -1,0 +1,60 @@
+hugetric-00020_graph.part.2
+	Total Volume: 		2636
+	Max Volume: 		1318
+	Average Volume: 	1318
+	Std.Dev: 			0.0
+
+hugetric-00020_graph.part.4
+	Total Volume: 		8134
+	Max Volume: 		2611
+	Average Volume: 	2033.5
+	Std.Dev: 			432.96
+
+hugetric-00020_graph.part.8
+	Total Volume: 		15600
+	Max Volume: 		2435
+	Average Volume: 	1950
+	Std.Dev: 			343.2
+
+hugetric-00020_graph.part.16
+	Total Volume: 		23138
+	Max Volume: 		1805
+	Average Volume: 	1446.12
+	Std.Dev: 			190.87
+
+hugetric-00020_graph.part.32
+	Total Volume: 		34902
+	Max Volume: 		1375
+	Average Volume: 	1090.69
+	Std.Dev: 			168.97
+
+hugetric-00020_graph.part.64
+	Total Volume: 		51552
+	Max Volume: 		1026
+	Average Volume: 	805.5
+	Std.Dev: 			134.4
+
+hugetric-00020_graph.part.128
+	Total Volume: 		75114
+	Max Volume: 		766
+	Average Volume: 	586.83
+	Std.Dev: 			86.12
+
+hugetric-00020_graph.part.256
+	Total Volume: 		109156
+	Max Volume: 		532
+	Average Volume: 	426.39
+	Std.Dev: 			56.51
+
+hugetric-00020_graph.part.512
+	Total Volume: 		158676
+	Max Volume: 		419
+	Average Volume: 	309.91
+	Std.Dev: 			39.59
+
+hugetric-00020_graph.part.1024
+	Total Volume: 		225046
+	Max Volume: 		314
+	Average Volume: 	219.77
+	Std.Dev: 			25.74
+

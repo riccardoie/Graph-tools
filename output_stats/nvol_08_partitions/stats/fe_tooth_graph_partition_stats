@@ -1,0 +1,48 @@
+fe_tooth_graph.part.2
+	Total Volume: 		2624
+	Max Volume: 		1312
+	Average Volume: 	1312
+	Std.Dev: 			0.0
+
+fe_tooth_graph.part.4
+	Total Volume: 		5248
+	Max Volume: 		1312
+	Average Volume: 	1312
+	Std.Dev: 			0.0
+
+fe_tooth_graph.part.8
+	Total Volume: 		8156
+	Max Volume: 		1188
+	Average Volume: 	1019.5
+	Std.Dev: 			123.93
+
+fe_tooth_graph.part.16
+	Total Volume: 		12769
+	Max Volume: 		1085
+	Average Volume: 	798.06
+	Std.Dev: 			185.61
+
+fe_tooth_graph.part.32
+	Total Volume: 		18449
+	Max Volume: 		704
+	Average Volume: 	576.53
+	Std.Dev: 			128.22
+
+fe_tooth_graph.part.64
+	Total Volume: 		25590
+	Max Volume: 		646
+	Average Volume: 	399.84
+	Std.Dev: 			99.69
+
+fe_tooth_graph.part.128
+	Total Volume: 		35469
+	Max Volume: 		487
+	Average Volume: 	277.1
+	Std.Dev: 			72.79
+
+fe_tooth_graph.part.256
+	Total Volume: 		49856
+	Max Volume: 		325
+	Average Volume: 	194.75
+	Std.Dev: 			52.12
+

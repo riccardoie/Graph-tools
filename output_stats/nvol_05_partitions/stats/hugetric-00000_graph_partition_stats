@@ -1,0 +1,30 @@
+hugetric-00000_graph.part.2
+	Total Volume: 		2500
+	Max Volume: 		1250
+	Average Volume: 	1250
+	Std.Dev: 			0.0
+
+hugetric-00000_graph.part.4
+	Total Volume: 		6306
+	Max Volume: 		2383
+	Average Volume: 	1576.5
+	Std.Dev: 			478.51
+
+hugetric-00000_graph.part.8
+	Total Volume: 		11696
+	Max Volume: 		1814
+	Average Volume: 	1462
+	Std.Dev: 			235.44
+
+hugetric-00000_graph.part.16
+	Total Volume: 		17683
+	Max Volume: 		1483
+	Average Volume: 	1105.19
+	Std.Dev: 			178.56
+
+hugetric-00000_graph.part.32
+	Total Volume: 		26744
+	Max Volume: 		1124
+	Average Volume: 	835.75
+	Std.Dev: 			146.42
+

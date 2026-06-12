@@ -1,0 +1,30 @@
+fe_tooth_graph.part.2
+	Total Volume: 		2624
+	Max Volume: 		1312
+	Average Volume: 	1312
+	Std.Dev: 			0.0
+
+fe_tooth_graph.part.4
+	Total Volume: 		5233
+	Max Volume: 		1309
+	Average Volume: 	1308.25
+	Std.Dev: 			0.43
+
+fe_tooth_graph.part.8
+	Total Volume: 		8398
+	Max Volume: 		1184
+	Average Volume: 	1049.75
+	Std.Dev: 			61.54
+
+fe_tooth_graph.part.16
+	Total Volume: 		13098
+	Max Volume: 		1040
+	Average Volume: 	818.62
+	Std.Dev: 			150.91
+
+fe_tooth_graph.part.32
+	Total Volume: 		18766
+	Max Volume: 		764
+	Average Volume: 	586.44
+	Std.Dev: 			114.53
+

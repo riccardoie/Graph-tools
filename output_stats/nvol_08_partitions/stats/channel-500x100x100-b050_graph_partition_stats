@@ -1,0 +1,66 @@
+channel-500x100x100-b050_graph.part.2
+	Total Volume: 		19825
+	Max Volume: 		9916
+	Average Volume: 	9912.5
+	Std.Dev: 			3.5
+
+channel-500x100x100-b050_graph.part.4
+	Total Volume: 		61572
+	Max Volume: 		20829
+	Average Volume: 	15393
+	Std.Dev: 			5218.46
+
+channel-500x100x100-b050_graph.part.8
+	Total Volume: 		141194
+	Max Volume: 		20988
+	Average Volume: 	17649.25
+	Std.Dev: 			4495.87
+
+channel-500x100x100-b050_graph.part.16
+	Total Volume: 		250196
+	Max Volume: 		17632
+	Average Volume: 	15637.25
+	Std.Dev: 			2213.27
+
+channel-500x100x100-b050_graph.part.32
+	Total Volume: 		359277
+	Max Volume: 		13441
+	Average Volume: 	11227.41
+	Std.Dev: 			1381.41
+
+channel-500x100x100-b050_graph.part.64
+	Total Volume: 		527486
+	Max Volume: 		11097
+	Average Volume: 	8241.97
+	Std.Dev: 			1346.16
+
+channel-500x100x100-b050_graph.part.128
+	Total Volume: 		748520
+	Max Volume: 		7562
+	Average Volume: 	5847.81
+	Std.Dev: 			1110.83
+
+channel-500x100x100-b050_graph.part.256
+	Total Volume: 		1019351
+	Max Volume: 		5077
+	Average Volume: 	3981.84
+	Std.Dev: 			726.86
+
+channel-500x100x100-b050_graph.part.512
+	Total Volume: 		1393033
+	Max Volume: 		3383
+	Average Volume: 	2720.77
+	Std.Dev: 			460.82
+
+channel-500x100x100-b050_graph.part.1024
+	Total Volume: 		1855552
+	Max Volume: 		2211
+	Average Volume: 	1812.06
+	Std.Dev: 			280.88
+
+channel-500x100x100-b050_graph.part.2048
+	Total Volume: 		2454145
+	Max Volume: 		1533
+	Average Volume: 	1198.31
+	Std.Dev: 			173.04
+

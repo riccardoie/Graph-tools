@@ -1,0 +1,30 @@
+citationCiteseer_graph.part.2
+	Total Volume: 		31866
+	Max Volume: 		15933
+	Average Volume: 	15933
+	Std.Dev: 			0.0
+
+citationCiteseer_graph.part.4
+	Total Volume: 		70022
+	Max Volume: 		18320
+	Average Volume: 	17505.5
+	Std.Dev: 			1409.6
+
+citationCiteseer_graph.part.8
+	Total Volume: 		126314
+	Max Volume: 		19321
+	Average Volume: 	15789.25
+	Std.Dev: 			2230.98
+
+citationCiteseer_graph.part.16
+	Total Volume: 		168907
+	Max Volume: 		15347
+	Average Volume: 	10556.69
+	Std.Dev: 			2678.76
+
+citationCiteseer_graph.part.32
+	Total Volume: 		216888
+	Max Volume: 		11619
+	Average Volume: 	6777.75
+	Std.Dev: 			2547.51
+
